@@ -10,7 +10,7 @@ class SearchBar extends Component { // states: only class based components have 
     }
     render() {
         return (
-            <div className="col-md-12 mt-4">
+            <div className="col-md-12 mt-4 pl-0">
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">videos</span>
