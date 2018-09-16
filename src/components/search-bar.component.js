@@ -15,14 +15,15 @@ class SearchBar extends Component { // states: only class based components have 
                     <div className="input-group-prepend">
                         <span className="input-group-text">videos</span>
                     </div>
-                    <input className="form-control" onChange={ this.onIputChange } placeholder='search here' />
+                    <input className="form-control" onChange={ event => this.onIputChange(event.target.value) } placeholder='search here' />
                 </div>
             </div>
         );
     }
 
-    onIputChange(event) {
-        this.setState({ term: event.target.value });
+    onIputChange(term) {
+        this.setState({ term });
+        this.props.onSearchTermChange(term);
     }
 }
 
