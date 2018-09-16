@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import YTSearch from 'youtube-api-search';
+import _ from 'lodash';
 import SearchBar from './components/search-bar.component';
 import VideoList from './components/video-list.component';
 import VideoDetail from './components/video-detail.component';
@@ -30,10 +31,12 @@ class App extends Component {
     }
 
     render() {
+        const delayedSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
+
         return (
             <div className="container">
                 <div className="row">
-                    <SearchBar onSearchTermChange={ term => this.videoSearch(term) } />
+                    <SearchBar onSearchTermChange={ delayedSearch } />
                 </div>
                 <div className="row">
                     <VideoDetail video={ this.state.selectedVideo }></VideoDetail>
